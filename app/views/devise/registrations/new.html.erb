@@ -1,0 +1,522 @@
+<meta charset="utf-8">
+<html>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Chonburi|Nanum+Myeongjo" rel="stylesheet">
+
+
+<style> 
+
+
+
+
+@import url(https://markmurray.co/codepen/customstyle.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100);
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+
+  background: #111;
+  height: 100%;
+  font-family: Raleway, sans-serif;
+}
+
+.container {
+  background: #eff0f1;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  -moz-transition: all 0.3s ease 0.6s;
+  -o-transition: all 0.3s ease 0.6s;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition-delay: 0.6s;
+  transition: all 0.3s ease 0.6s;
+  z-index: 10;
+  padding: 4em;
+  position: relative;
+    background-size: cover; 
+  background-image: url('/assets/background.png ');
+}
+
+form.info{
+    padding-left: 35%;
+
+}
+.container.nav-open {
+  margin-top: 6em;
+  width: 90%;
+  transition: all 0.3s ease;
+}
+
+/*
+  menu icon css3
+*/
+.menu-icon {
+  position: relative;
+  display: block;
+  width: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+}
+.menu-icon:hover span {
+  background: #222;
+}
+.menu-icon:hover span:before, .menu-icon:hover span:after {
+  background: #222;
+}
+
+.menu-icon > span {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 0.25em;
+  background-color: #af0b13;
+  border-radius: 3px;
+  transition: background 0.25s ease, -webkit-transform 0.3s;
+  transition: transform 0.3s, background 0.25s ease;
+  transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
+}
+
+.menu-icon > span:before,
+.menu-icon > span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #af0b13;
+  border-radius: 3px;
+  transition: background 0.25s ease, -webkit-transform 0.3s;
+  transition: transform 0.3s, background 0.25s ease;
+  transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
+}
+
+.menu-icon > span:before {
+  -webkit-transform: translateY(-0.75em);
+  transform: translateY(-0.75em);
+}
+
+.menu-icon > span:after {
+  -webkit-transform: translateY(0.75em);
+  transform: translateY(0.75em);
+}
+
+/* OPENED */
+.menu-icon.open {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.menu-icon.open > span:before {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.menu-icon.open > span:after {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  color: white;
+  z-index: 1;
+}
+nav ul li.animate {
+  top: 0;
+}
+nav ul li {
+  display: inline-block;
+  text-align: center;
+  margin: 1em 2em;
+  cursor: pointer;
+  position: relative;
+  top: -8em;
+}
+nav ul li:nth-child(1) {
+  -moz-transition: top 0.3s ease 0.15s;
+  -o-transition: top 0.3s ease 0.15s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.15s;
+  transition: top 0.3s ease 0.15s;
+}
+nav ul li:nth-child(2) {
+  -moz-transition: top 0.3s ease 0.2s;
+  -o-transition: top 0.3s ease 0.2s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.2s;
+  transition: top 0.3s ease 0.2s;
+}
+nav ul li:nth-child(3) {
+  -moz-transition: top 0.3s ease 0.25s;
+  -o-transition: top 0.3s ease 0.25s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.25s;
+  transition: top 0.3s ease 0.25s;
+}
+nav ul li:nth-child(4) {
+  -moz-transition: top 0.3s ease 0.3s;
+  -o-transition: top 0.3s ease 0.3s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  transition: top 0.3s ease 0.3s;
+}
+nav ul li:nth-child(5) {
+  -moz-transition: top 0.3s ease 0.35s;
+  -o-transition: top 0.3s ease 0.35s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.35s;
+  transition: top 0.3s ease 0.35s;
+}
+nav ul li:hover {
+  opacity: 1;
+}
+nav ul li i {
+  font-size: 1.5em;
+  background: #10d7af;
+  padding: 0.75em;
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  overflow: hidden;
+  text-shadow: 0px 0px #0ca888, 1px 1px #0ca888, 2px 2px #0ca888, 3px 3px #0ca888, 4px 4px #0ca888, 5px 5px #0ca888, 6px 6px #0ca888, 7px 7px #0ca888, 8px 8px #0ca888, 9px 9px #0ca888, 10px 10px #0ca888, 11px 11px #0ca888, 12px 12px #0ca888, 13px 13px #0ca888, 14px 14px #0ca888, 15px 15px #0ca888, 16px 16px #0ca888, 17px 17px #0ca888, 18px 18px #0ca888, 19px 19px #0ca888, 20px 20px #0ca888, 21px 21px #0ca888, 22px 22px #0ca888, 23px 23px #0ca888, 24px 24px #0ca888, 25px 25px #0ca888, 26px 26px #0ca888, 27px 27px #0ca888, 28px 28px #0ca888, 29px 29px #0ca888, 30px 30px #0ca888, 31px 31px #0ca888, 32px 32px #0ca888, 33px 33px #0ca888, 34px 34px #0ca888, 35px 35px #0ca888, 36px 36px #0ca888, 37px 37px #0ca888, 38px 38px #0ca888, 39px 39px #0ca888, 40px 40px #0ca888, 41px 41px #0ca888, 42px 42px #0ca888, 43px 43px #0ca888, 44px 44px #0ca888, 45px 45px #0ca888, 46px 46px #0ca888, 47px 47px #0ca888, 48px 48px #0ca888, 49px 49px #0ca888, 50px 50px #0ca888, 51px 51px #0ca888, 52px 52px #0ca888, 53px 53px #0ca888, 54px 54px #0ca888, 55px 55px #0ca888, 56px 56px #0ca888, 57px 57px #0ca888, 58px 58px #0ca888, 59px 59px #0ca888, 60px 60px #0ca888;
+}
+nav ul li h4 {
+  line-height: 2.5;
+}
+
+
+    @font-face {
+  font-family: typewriter;
+  src: url('/assets/typewriter.ttf');
+}
+
+h1 {
+      font-family: "typewriter";
+
+  font-size: 40px;
+  margin-bottom: 2.5%;
+    z-index: 3;
+}
+
+input,
+p,
+label,
+textarea {
+  
+    font-family: "typewriter";
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 15px;
+  text-shadow: 4px 2px 2px lightgray;
+
+}
+
+textarea:focus,
+input:focus {
+  outline: 0;
+}
+/* Question */
+
+input.question,
+textarea.question {
+  font-size: 30px;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  border: none;
+  width: 80%;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+}
+/* Underline and Placeholder */
+
+input.question + label,
+textarea.question + label {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  width: 10%;
+  border-top: 1px solid red;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+  height: 0px;
+}
+
+input.question:focus + label,
+textarea.question:focus + label {
+  width: 80%;
+}
+
+input.question:focus,
+input.question:valid {
+  padding-top: 35px;
+}
+
+textarea.question:valid,
+textarea.question:focus {
+  margin-top: 35px;
+}
+
+input.question:focus + label > p,
+input.question:valid + label > p {
+  top: -100px;
+  font-size: 22px;
+  color: #333;
+}
+
+textarea.question:focus + label > p,
+textarea.question:valid + label > p {
+  top: -150px;
+  font-size: 22px;
+  color: #333;
+}
+
+input.question:valid + label,
+textarea.question:valid + label {
+  border-color: green;
+}
+
+input.question:invalid,
+textarea.question:invalid {
+  box-shadow: none;
+}
+
+input.question + label > p,
+textarea.question + label > p {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  color: #606060;
+  font-size: 30px;
+  top: -66px;
+  left: 0px;
+  z-index: -1;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+input[type="submit"] {
+  -webkit-transition: opacity 0.2s ease, background 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  display: block;
+  opacity: 0;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #EEE;
+}
+
+input[type="submit"]:active {
+  background: #999;
+}
+
+input.question:valid ~ input[type="submit"], textarea.question:valid ~ input[type="submit"] {
+  -webkit-animation: appear 1s forwards;
+  animation: appear 1s forwards;
+}
+
+input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input[type="submit"] {
+  display: none;
+}
+
+@-webkit-keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/*Neon*/
+
+
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+div.out_nav{
+  right: 10px
+    display: inline-block;
+
+  display: flex;
+  flex-flow: row nowrap; /* Align on the same line */
+  justify-content: space-between; /* Equal margin between the child elements */
+}
+
+
+.neon {
+  font-family: neon;
+  margin-top: 5px;
+  color: #FB4264;
+  font-size: 18pt;
+\  text-shadow: 0 0 2vw #F40A35;
+}
+
+.flux {
+  font-family: neon;
+    margin-top: 5px;
+    margin-left: 30px;
+
+  color: #426DFB;
+  font-size: 18pt;
+  text-shadow: 0 0 2vw #2356FF;
+}
+
+.neon {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+    color: #FED128;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+    color: #806914;
+  }
+}
+
+.flux {
+  animation: flux 2s linear infinite;
+  -moz-animation: flux 2s linear infinite;
+  -webkit-animation: flux 2s linear infinite;
+  -o-animation: flux 2s linear infinite;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
+    color: #146C80;
+  }
+}
+nav{
+  padding-top: 2em;
+}
+
+</style>
+
+<nav>
+  <ul>
+  <div class="out_nav">
+  <div class="neon">
+  <a href="/mainpage/main">
+    Main page
+  </a></div>
+        <div class="flux"><a style="cursor:hand" onclick="alert('회원가입을 해주세요.')">Login</a>
+
+   </div> 
+     
+      </div>
+  
+  </ul>
+</nav>
+
+<div class="container"><div class="menu-icon"><span></span></div>
+<form class="info" action= "/users" method="POST">
+<h1><br><br><br><br><br><br><strong>Join as a<br><br><br>
+            Zitadelle Member<strong></h1>
+
+    <br><br> <br><br><br><br>
+
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  
+  <input type="text" name="user[email]" class="question" id="user_email" required autocomplete="off" />
+  <label for="email"><p>What's your email?</p></label>
+  <em>사용자의 개인정보는 저장되지 않습니다.</em>
+  
+  <br><br> <br>
+  
+  <input type="text" name="user[nickname]" class="question" id="user_nickname" required autocomplete="off" />
+  <label for="user.nickname"><p>What's your nickname?</p></label>
+  
+  <br><br> <br>
+  
+<input type="password" name="user[password]" class="question" id="user_password" required autocomplete="off" />
+  <label for="password"><p>What's your password?</p></label>
+  <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 글자 이상으로 설정해주세요)</em>
+  <% end %><br />
+
+    <br><br> <br>
+
+  
+  <input type="password" name="user[password_confirmation]" class="question" id="user_password_confirmation" required autocomplete="off" />
+      <label for="user_password_confirmation"><p>Password confirmation</p></label>
+
+
+
+
+
+
+  
+   <input type="submit" value="Submit!" />
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Sign up">
+  </div>
+
+  
+  
+  
+
+<%= render "devise/shared/links" %>
+<%end%>
+
+  </div>
+
+</div>
+
+
+</form>
+  
+  
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+
+(function($){
+  
+  $(".menu-icon").on("click", function(){
+    	$(this).toggleClass("open");
+    	$(".container").toggleClass("nav-open");
+    	$("nav ul li").toggleClass("animate");
+  });
+  
+})(jQuery);
+
+
+</script>

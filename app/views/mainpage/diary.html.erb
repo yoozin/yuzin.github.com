@@ -1,0 +1,440 @@
+<meta charset="utf-8">
+<html>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Chonburi|Nanum+Myeongjo" rel="stylesheet">
+
+
+<style> 
+
+
+
+
+@import url(https://markmurray.co/codepen/customstyle.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100);
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #111;
+  height: 100%;
+  font-family: Raleway, sans-serif;
+}
+
+.container {
+  background: #eff0f1;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  -moz-transition: all 0.3s ease 0.6s;
+  -o-transition: all 0.3s ease 0.6s;
+  -webkit-transition: all 0.3s ease;
+  -webkit-transition-delay: 0.6s;
+  transition: all 0.3s ease 0.6s;
+  z-index: 10;
+  padding: 2em;
+  position: relative;
+}
+
+.container.nav-open {
+  margin-top: 8em;
+  width: 90%;
+  transition: all 0.3s ease;
+}
+
+/*
+  menu icon css3
+*/
+.menu-icon {
+  position: relative;
+  display: block;
+  width: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+}
+.menu-icon:hover span {
+  background: #222;
+}
+.menu-icon:hover span:before, .menu-icon:hover span:after {
+  background: #222;
+}
+
+.menu-icon > span {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 0.25em;
+  background-color: #bbbbbb;
+  border-radius: 3px;
+  transition: background 0.25s ease, -webkit-transform 0.3s;
+  transition: transform 0.3s, background 0.25s ease;
+  transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
+}
+
+.menu-icon > span:before,
+.menu-icon > span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #bbbbbb;
+  border-radius: 3px;
+  transition: background 0.25s ease, -webkit-transform 0.3s;
+  transition: transform 0.3s, background 0.25s ease;
+  transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
+}
+
+.menu-icon > span:before {
+  -webkit-transform: translateY(-0.75em);
+  transform: translateY(-0.75em);
+}
+
+.menu-icon > span:after {
+  -webkit-transform: translateY(0.75em);
+  transform: translateY(0.75em);
+}
+
+/* OPENED */
+.menu-icon.open {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.menu-icon.open > span:before {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.menu-icon.open > span:after {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  color: white;
+  z-index: 1;
+}
+nav ul li.animate {
+  top: 0;
+}
+nav ul li {
+  display: inline-block;
+  text-align: center;
+  margin: 1em 2em;
+  cursor: pointer;
+  position: relative;
+  top: -8em;
+}
+nav ul li:nth-child(1) {
+  -moz-transition: top 0.3s ease 0.15s;
+  -o-transition: top 0.3s ease 0.15s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.15s;
+  transition: top 0.3s ease 0.15s;
+}
+nav ul li:nth-child(2) {
+  -moz-transition: top 0.3s ease 0.2s;
+  -o-transition: top 0.3s ease 0.2s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.2s;
+  transition: top 0.3s ease 0.2s;
+}
+nav ul li:nth-child(3) {
+  -moz-transition: top 0.3s ease 0.25s;
+  -o-transition: top 0.3s ease 0.25s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.25s;
+  transition: top 0.3s ease 0.25s;
+}
+nav ul li:nth-child(4) {
+  -moz-transition: top 0.3s ease 0.3s;
+  -o-transition: top 0.3s ease 0.3s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+  transition: top 0.3s ease 0.3s;
+}
+nav ul li:nth-child(5) {
+  -moz-transition: top 0.3s ease 0.35s;
+  -o-transition: top 0.3s ease 0.35s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.35s;
+  transition: top 0.3s ease 0.35s;
+}
+nav ul li:hover {
+  opacity: 1;
+}
+nav ul li i {
+  font-size: 1.5em;
+  background: #10d7af;
+  padding: 0.75em;
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  overflow: hidden;
+  text-shadow: 0px 0px #0ca888, 1px 1px #0ca888, 2px 2px #0ca888, 3px 3px #0ca888, 4px 4px #0ca888, 5px 5px #0ca888, 6px 6px #0ca888, 7px 7px #0ca888, 8px 8px #0ca888, 9px 9px #0ca888, 10px 10px #0ca888, 11px 11px #0ca888, 12px 12px #0ca888, 13px 13px #0ca888, 14px 14px #0ca888, 15px 15px #0ca888, 16px 16px #0ca888, 17px 17px #0ca888, 18px 18px #0ca888, 19px 19px #0ca888, 20px 20px #0ca888, 21px 21px #0ca888, 22px 22px #0ca888, 23px 23px #0ca888, 24px 24px #0ca888, 25px 25px #0ca888, 26px 26px #0ca888, 27px 27px #0ca888, 28px 28px #0ca888, 29px 29px #0ca888, 30px 30px #0ca888, 31px 31px #0ca888, 32px 32px #0ca888, 33px 33px #0ca888, 34px 34px #0ca888, 35px 35px #0ca888, 36px 36px #0ca888, 37px 37px #0ca888, 38px 38px #0ca888, 39px 39px #0ca888, 40px 40px #0ca888, 41px 41px #0ca888, 42px 42px #0ca888, 43px 43px #0ca888, 44px 44px #0ca888, 45px 45px #0ca888, 46px 46px #0ca888, 47px 47px #0ca888, 48px 48px #0ca888, 49px 49px #0ca888, 50px 50px #0ca888, 51px 51px #0ca888, 52px 52px #0ca888, 53px 53px #0ca888, 54px 54px #0ca888, 55px 55px #0ca888, 56px 56px #0ca888, 57px 57px #0ca888, 58px 58px #0ca888, 59px 59px #0ca888, 60px 60px #0ca888;
+}
+nav ul li h4 {
+  line-height: 2.5;
+}
+
+
+
+
+
+* {box-sizing: border-box}
+.page {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.date {
+  background: #555;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+textarea {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #efefef;
+  padding: 1em;
+}
+nav {
+  width: 100%;  
+  padding: 0;
+}
+nav > a {
+  display: inline-block;
+  width: 49%;
+  background: #efefef;
+  color: #222;
+  text-decoration: none;
+  padding: 1em;  
+  margin: 0.2em 0;
+}
+nav > a:nth-child(2) {
+  text-align: right;
+}
+nav > a[href="#today"] {
+  width: 100%;
+  text-align: center;
+}
+nav > a:hover {
+  background: #ddd;
+}
+
+
+
+/*Neon*/
+
+
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+div.out_nav{
+  right: 10px
+    display: inline-block;
+
+  display: flex;
+  flex-flow: row nowrap; /* Align on the same line */
+  justify-content: space-between; /* Equal margin between the child elements */
+}
+
+
+.neon {
+  font-family: neon;
+  margin-top: 5px;
+  color: #FB4264;
+  font-size: 18pt;
+\  text-shadow: 0 0 2vw #F40A35;
+}
+
+.flux {
+  font-family: neon;
+    margin-top: 5px;
+    margin-left: 30px;
+
+  color: #426DFB;
+  font-size: 18pt;
+  text-shadow: 0 0 2vw #2356FF;
+}
+
+.neon {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+    color: #FED128;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+    color: #806914;
+  }
+}
+
+.flux {
+  animation: flux 2s linear infinite;
+  -moz-animation: flux 2s linear infinite;
+  -webkit-animation: flux 2s linear infinite;
+  -o-animation: flux 2s linear infinite;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
+    color: #146C80;
+  }
+}
+nav{
+  padding-top: 2em;
+}
+
+
+
+
+
+
+</style>
+
+
+<nav>
+  <ul>
+  <div class="out_nav">
+  <div class="neon">
+  <a href="/mainpage/main">
+    Main page
+  </a></div>
+        <div class="flux"><a href="/mainpage/outro">Logout</a>
+
+   </div> 
+     
+      </div>
+  
+  </ul>
+</nav>
+<div class="container"><div class="menu-icon"><span></span></div>
+
+<div class="page">
+  <div class="date">
+    2017-01-01
+  </div>
+  <textarea id="content">
+  </textarea>
+  <nav>
+    <a id="dayprev" href="#prev-date">&lt;- Prev</a>
+    <a id="daynext" href="#next-date">Next -&gt;</a>
+    <a id="daytoday" href="#today">Today</a>
+  </nav>
+  <small>About: This is a simple diary utility. All data are saved locally in browser.</small>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+
+(function($){
+  
+  $(".menu-icon").on("click", function(){
+    	$(this).toggleClass("open");
+    	$(".container").toggleClass("nav-open");
+    	$("nav ul li").toggleClass("animate");
+  });
+  
+})(jQuery);
+
+function DateHelper(date){
+  if (date === undefined) {
+    date = new Date();
+  }
+  
+  // Require MomentJS: http://momentjs.com
+  return {
+    today: function() {
+      return moment(date);
+    },
+    nextDay: function(){
+      return moment(date).add(1,'day');
+    },
+    prevDay: function(){
+      return moment(date).subtract(1,'day');
+    },
+    toString: function(){
+      return moment(date).format('YYYY-MM-DD');
+    }
+  }
+}
+
+function save(dataIndex,datacontent) {
+  localStorage[dataIndex] = JSON.stringify(datacontent);
+}
+function loadOrDefault(dataIndex) {
+  if (localStorage[dataIndex] !== undefined) {
+    return JSON.parse(localStorage[dataIndex]);
+  } else {
+    return "";
+  }
+}
+
+// Load data or setup default data
+var dataIndex;
+var today = DateHelper(moment().format());
+// todo: init
+$(document).ready(function() {
+  $(".date").text(today);
+  dataIndex = $(".date").text().replace(/-/g,"");
+  document.getElementById("content").value = loadOrDefault(dataIndex);
+});
+// handling date choosing UI
+function changeData(){
+  document.getElementById("content").value = "";
+  $(".date").text(today);
+  dataIndex = $(".date").text().replace(/-/g,"");
+  document.getElementById("content").value = loadOrDefault(dataIndex);
+}
+$("#dayprev").click(function(){
+  today = DateHelper(today.prevDay());
+  changeData();
+});
+$("#daynext").click(function(){
+  today = DateHelper(today.nextDay());
+  changeData();
+});
+$("#daytoday").click(function(){
+  today = DateHelper(moment().format());
+  changeData();
+});
+// handling content changes
+$("#content").blur(function(){
+  if(document.getElementById("content").value != ""){
+    dataIndex = $(".date").text().replace(/-/g,"");
+    save(dataIndex,document.getElementById("content").value);
+  }
+});
+</script>
+

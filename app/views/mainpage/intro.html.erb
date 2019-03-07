@@ -1,0 +1,267 @@
+<meta charset="utf-8">
+<html>
+   <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&amp;subset=korean" rel="stylesheet">
+
+    <style>
+    
+
+
+        * {
+  margin: 15;
+  padding: 15;
+  background: #000;
+}
+
+
+.terminal {
+  text-transform:uppercase;
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  font-family: 'Nanum Myeongjo', serif;
+  color: white;
+}
+
+.terminal-line {
+  display: block;
+  margin-left: 100px;
+  margin-top: 100px;
+  letter-spacing: 2px;
+  line-height: 150%;
+  font-size: 18px;
+}
+    </style>
+    
+    <title>Zitadelle</title>
+    
+    <body onLoad="pagestart()">
+ 
+<div class="terminal">
+ 
+  <span terminal=1 class="terminal-line">
+    Zitadelle ; 치타델레
+  <br /><br />
+    치타델레는 ‘요새 안의 독립된 작은 보루, 내성(內城)’를 뜻한다.
+  <br /><br />
+    치타델레는 철학자 몽테뉴가 명작 <수상록>을 저술한 장소이다. <br />
+    그는 사회로부터의 모든 직책을 내려놓고 자신의 영지 안에 있던 3층짜리 원형탑 치타델레에 외부로부터 자신을 고립시켰다.<br />
+    그는 세상과 물리적으로 멀어진 그 공간 속에서 10여 년 동안 온전히 자신에게 집중하였고, <br />
+    떠오르는 단상들을 메모하여 ‘수상록’을 집필하였다.
+    <br />
+    몽테뉴는 세상과 물리적으로 멀어진 그 공간 속에서 ‘내가 무엇을 아는가’란 질문과 함께 
+     <br />
+     정신적으로는 세상과 더 가까워질 수 있었다.
+    <br />
+    치타델레는 바쁜 일상 속에서 사회와 단절시킨 오롯이 나만이 가지는 시간과 공간을 의미한다.<br /> 
+    그리고 그 공간은 개인에게 정신적인 향유(jouissance)를 가능하게 하는 세계이다. 
+    <br /><br />
+    모두가 잠든 밤은 개인의 독립된 공간이 없는 우리에게 '치타델레(zitadelle)'를 선사한다. <br />
+    일상을 살아가면서 사회를 떠나지 못하는 우리에게 밤은 타인의 개입 없이 절대적인 자신만의 공간에서  <br />
+    자신의 질문에만 몰두 할 수 있는 거처를 마련해준다.<br />
+    혼자있는 밤은 혼자 있는 개인에게 정신적인 향유가 가능한 세계다. <br />
+    리투아니아 철학자 에마뉘엘 레비나스는 향유란 하나의 개체가 개체로서 '나의 나 됨', 즉 자기성을 확보하는 과정이라고 표현했다. <br />
+    이는 사회적 가면(persona)를 벗어 던지고 창의적인 자신을 찾게 해준다.<br />
+    
+    
+    <br />
+    사람들은 SNS와 사회 속에서 멀어져 혼자 있을때 내면 가장 깊은 곳의 느낌과 접촉한다. <br />
+    상실을 받아들이고 생각을 정리해 태도를 바꾼다.<br />
+   모두가 잠든 세상은 우리에게 치타델레를 선사한다.
+    <br /><br />
+    rooting via boot from /yuzin.one: 19950312 - MAR<br />
+    
+    starting...
+    <a href = "mainpage/main">click here</a>
+    </span>
+
+    <br /><br />
+
+
+</div>
+
+
+</body>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    
+// var auto_refresh = setInterval(
+// function ()
+// {
+// $('.terminal').load('refresh.html').fadeIn("slow");
+// }, 1000); // 새로고침 시간 1000은 1초를 의미합니다.
+    
+    
+    
+    
+            $(document).ready(function(){
+              
+              
+               $(this).keydown(function (key) {
+ 
+        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+         terminals_end()
+          
+        }
+ 
+    });
+              
+              
+              
+              
+   $(".terminal").mouseover(function(e){
+     
+     var rXP = (e.pageX - this.offsetLeft-$(this).width()/2);
+     
+     var rYP = (e.pageY - this.offsetTop-$(this).height()/2);
+     
+    $(".terminal").css('text-shadow', +rYP/200+'px '+rXP/190+'px rgba(227,6,19,.9), '+rYP/210+'px '+rXP/170+'px rgba(255,237,0,.9), '+rXP/200+'px '+rYP/240+'px rgba(0,159,227,1)');
+   });
+});
+    
+
+
+function getAllElementsWithAttribute(attribute)
+{
+  var matchingElements = [];
+  
+  var allElements = document.getElementsByTagName('span');
+  
+  for (var i = 0, n = allElements.length; i < n; i++)
+  {
+    if (allElements[i].getAttribute(attribute))
+    {
+      matchingElements.push(allElements[i]);
+    }
+  }
+  return matchingElements;
+}
+
+
+var terminalElements = getAllElementsWithAttribute("terminal");
+
+
+function terminals_init()
+{
+  var elements = terminalElements;
+  for (var i = 0; i < elements.length; i++)
+  {
+    var e = elements[i]
+    e.completeHTML = e.innerHTML
+    e.innerHTML = ""
+    e.i = 0
+  }
+
+}
+
+function terminals_start()
+{
+  //terminalIntervalFunction = function(){ terminals_next() }
+  //setInterval(terminalIntervalFunction, 1000/60);
+  terminals_next()
+}
+
+function terminals_next()
+{
+  var done = true
+  var elements = terminalElements;
+
+  for (var i = 0; i < elements.length && done == true; i++)
+  {
+    var e = elements[i]
+
+    e.i ++
+
+    if (e.innerHTML.length >= e.completeHTML.length)
+    {
+      e.innerHTML = e.completeHTML
+    }
+    else
+    {
+      var s =  e.completeHTML.substring(0, e.i) 
+
+      if (s.slice(-1) == " ") 
+      {
+        if(e.innerHTML.length % 6 == 0 ) { s = s + "" } else { s = s + "|" }
+      }
+      else
+      {
+        s = s + "|"
+      }
+
+      e.innerHTML = s
+      e.parentNode.style.display = 'none'
+      e.parentNode.style.display = 'block'
+      done = false
+    }
+
+  }
+
+    
+
+
+
+
+  if (!done)
+  {
+    //window.clearInterval(terminalIntervalFunction)
+    setTimeout(terminals_next, 1000/35)
+  }
+}
+
+function ee()
+{
+  var elements = terminalElements;
+  
+}
+function terminals_end()
+{
+  done = true
+  var elements = terminalElements;
+
+  for (var i = 0; i < elements.length && done == true; i++)
+  {
+    var e = elements[i]
+
+    e.i ++
+
+    if (e.innerHTML.length >= e.completeHTML.length)
+    {
+      e.innerHTML = e.completeHTML
+    }
+    else
+    {
+      var s =  e.completeHTML.substring(0, e.i) 
+
+      if (s.slice(-1) == " ") 
+      {
+        if(e.innerHTML.length % 6 == 0 ) { s = s + "" } else { s = s + "|" }
+      }
+      else
+      {
+        s = s + "|"
+      }
+
+      e.innerHTML = s
+      e.parentNode.style.display = 'none'
+      e.parentNode.style.display = 'block'
+      done = false
+    }
+
+  }
+terminals_end()
+}
+
+terminals_init()
+
+
+
+window.onload = function() { terminals_start() };
+        
+        
+        
+
+        
+    </script>
+</html>

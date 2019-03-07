@@ -1,0 +1,132 @@
+<meta charset="utf-8">
+<html>
+   <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&amp;subset=korean" rel="stylesheet">
+
+<head>
+<style> 
+
+body {
+  font-family: sans-serif;
+  background-color: black;
+}
+
+a {
+  color: #ff5f2e;
+
+  }
+
+
+button {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Nanum Myeongjo', serif;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.screen {
+  background-color: #e1eef6;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  content: " ";
+  overflow: hidden;
+  
+    /*// Fallback for old browsers*/
+  background: #16222A;
+
+  background: -webkit-linear-gradient(to left, #16222A , #3A6073);
+  background: linear-gradient(to left, #16222A , #3A6073);
+  
+  background-size: cover;
+  
+  background-image: url(https://cldup.com/gn3s3Fg75t.gif);
+  
+   color: #e1eef6;
+}
+
+</style>
+
+
+
+<section class="screen">
+  <div class="content">
+    <!-- [FS] NOTE: This is can be treated also as normal web page and containg normal content -->
+  </div>
+</section>
+
+<button id="switcher-tv"type="button" style="cursor:pointer" onclick="location.href='/' ">치타델레 시작하기</button>
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+ 
+ (function() {
+  var SELECTOR_SCREEN_ELEMENT = ".screen";
+  var SELECTOR_SWITCHER_TV = "#switcher-tv";
+
+  var isTurnedOn = true;
+
+  var timeline;
+
+  function buildTimeline() {
+    timeline = new TimelineMax({
+      paused: true
+    });
+
+    timeline
+      .to(SELECTOR_SCREEN_ELEMENT, 0.2, {
+        width: "100vw",
+        height: "2px",
+        background: "#ffffff",
+        ease: Power2.easeOut
+      })
+      .to(SELECTOR_SCREEN_ELEMENT, 0.2, {
+        width: "0",
+        height: "0",
+        background: "#ffffff"
+      });
+  }
+
+  function toggleSwitcherTV() {
+    if (isTurnedOn) {
+      timeline.restart();
+    }
+
+    if (!isTurnedOn) {
+      timeline.reverse();
+    }
+
+    isTurnedOn = !isTurnedOn;
+  }
+
+  // Initialize
+  $(document).ready(buildTimeline);
+
+  // Bindings
+  $(document).on("click", SELECTOR_SWITCHER_TV, function() {
+    toggleSwitcherTV();
+  });
+})();
+
+ 
+ 
+    </script>
+    </head>
+</html>
+  
+  
+ 
